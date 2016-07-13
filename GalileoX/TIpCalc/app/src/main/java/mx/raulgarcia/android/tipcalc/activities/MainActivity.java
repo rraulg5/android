@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Date;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -21,6 +23,7 @@ import mx.raulgarcia.android.tipcalc.R;
 import mx.raulgarcia.android.tipcalc.TipCalcApp;
 import mx.raulgarcia.android.tipcalc.fragments.TipHistoryListFragment;
 import mx.raulgarcia.android.tipcalc.fragments.TipHistoryListFragmentListener;
+import mx.raulgarcia.android.tipcalc.model.TipRecord;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,10 +80,17 @@ public class MainActivity extends AppCompatActivity {
         if (! strInputTotal.isEmpty()) {
             double total = Double.parseDouble(strInputTotal);
             int tipPercentage = getTipPercentage();
-            double tip = total * (tipPercentage / 100d);
 
-            String strTip = String.format(getString(R.string.global_msg_tip), tip);
-            fragmentListener.action(strTip);
+            TipRecord tipRecord = new TipRecord();
+            tipRecord.setBill(total);
+            tipRecord.setTipPercentage(tipPercentage);
+            tipRecord.setTimestamp(new Date());
+
+            String strTip = String.format(
+                    getString(R.string.global_msg_tip),
+                    tipRecord.getTip()
+            );
+            fragmentListener.addToList(tipRecord);
             txtTip.setVisibility(View.VISIBLE);
             txtTip.setText(strTip);
         }
@@ -89,7 +99,12 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btnIncrease)
     public void handleClickIncrease() {
        hideKeyboard();
-        handleTipChange(- TIP_STEP_CHANGE);
+        handleTipChange(TIP_STEP_CHANGE);
+    }
+
+    @OnClick(R.id.btnClear)
+    public void handleClickClear() {
+        fragmentListener.clearList();
     }
 
     private void handleTipChange(int change) {
@@ -104,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btnDecrease)
     public void handleClickDecrease() {
         hideKeyboard();
+        handleTipChange(- TIP_STEP_CHANGE);
     }
 
     private void hideKeyboard() {
