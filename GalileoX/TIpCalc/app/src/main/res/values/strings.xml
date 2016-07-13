@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">TIpCalc</string>
+    <string name="main.btn.submit">Calcular</string>
+    <string name="main.hint.bill">Total</string>
+    <string name="main.hint.percentage">% de Propina</string>
+    <string name="main.btn.increase">+</string>
+    <string name="main.btn.decrease">-</string>
+    <string name="main.btn.clear">Borrar Recientes</string>
+    <string name="main.notice.clear">Elementos Recientes Ha Quedado Vacio</string>
+    <string name="main.menu.action.about">Acerca de</string>
+
+    <string name="global.msg.tip">Propina %,.1f</string>
 </resources>
