@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import mx.raulgarcia.android.tipcalc.R;
+import mx.raulgarcia.android.tipcalc.adapters.OnItemClickListener;
 import mx.raulgarcia.android.tipcalc.adapters.TipAdapter;
 import mx.raulgarcia.android.tipcalc.model.TipRecord;
 
@@ -22,7 +23,7 @@ import mx.raulgarcia.android.tipcalc.model.TipRecord;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TipHistoryListFragment extends Fragment implements TipHistoryListFragmentListener {
+public class TipHistoryListFragment extends Fragment implements TipHistoryListFragmentListener, OnItemClickListener {
 
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -50,7 +51,7 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
         if (adapter == null) {
             adapter = new TipAdapter(
                     getActivity().getApplicationContext(),
-                    new ArrayList<TipRecord>()
+                    this
             );
         }
     }
@@ -68,5 +69,10 @@ public class TipHistoryListFragment extends Fragment implements TipHistoryListFr
     @Override
     public void clearList() {
         adapter.clear();
+    }
+
+    @Override
+    public void onItemClick(TipRecord tipRecord) {
+        Toast.makeText(getActivity(), tipRecord.getDateFormated(), Toast.LENGTH_SHORT).show();
     }
 }
