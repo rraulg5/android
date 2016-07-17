@@ -1,4 +1,4 @@
-package mx.raulgarcia.android.androidchat;
+package mx.raulgarcia.android.androidchat.domain;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
@@ -8,7 +8,6 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by rraulg5 on 15/07/2016.
@@ -107,7 +106,7 @@ public class FirebaseHelper {
 
     public void notifyContactsOfConnectionChange(final boolean online, final boolean signoff) {
         final String myEmail = getAuthUserEmail();
-        getContactsReference().addListenerForSingleValueEvent(new ValueEventListener() {
+        getMyContactsReference().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot chil: dataSnapshot.getChildren()) {
