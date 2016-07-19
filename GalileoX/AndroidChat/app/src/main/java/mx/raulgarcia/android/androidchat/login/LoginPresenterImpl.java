@@ -1,10 +1,9 @@
 package mx.raulgarcia.android.androidchat.login;
 
-import android.util.Log;
-
 import mx.raulgarcia.android.androidchat.lib.EventBus;
 import mx.raulgarcia.android.androidchat.lib.GreenRobotEventBus;
 import mx.raulgarcia.android.androidchat.login.events.LoginEvent;
+import mx.raulgarcia.android.androidchat.login.ui.LoginView;
 
 /**
  * Created by rrualg5 on 18/07/2016.
@@ -88,8 +87,6 @@ public class LoginPresenterImpl implements LoginPresenter {
             loginView.hideProgress();
             loginView.enableInputs();
         }
-
-        Log.e("LoginPresenterImpl", "onFailedtoRecoverSession");
     }
 
     private void onSignInSuccess() {

@@ -1,15 +1,12 @@
-package mx.raulgarcia.android.androidchat.login;
+package mx.raulgarcia.android.androidchat.login.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
@@ -18,6 +15,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mx.raulgarcia.android.androidchat.R;
 import mx.raulgarcia.android.androidchat.contactlist.ContactListActivity;
+import mx.raulgarcia.android.androidchat.login.LoginPresenter;
+import mx.raulgarcia.android.androidchat.login.LoginPresenterImpl;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 

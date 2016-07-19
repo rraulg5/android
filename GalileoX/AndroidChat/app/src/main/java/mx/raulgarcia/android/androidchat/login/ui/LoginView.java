@@ -1,4 +1,4 @@
-package mx.raulgarcia.android.androidchat.login;
+package mx.raulgarcia.android.androidchat.login.ui;
 
 /**
  * Created by rraulg5 on 17/07/16.
