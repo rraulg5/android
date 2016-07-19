@@ -1,5 +1,7 @@
 package mx.raulgarcia.android.androidchat.login;
 
+import org.greenrobot.eventbus.Subscribe;
+
 import mx.raulgarcia.android.androidchat.lib.EventBus;
 import mx.raulgarcia.android.androidchat.lib.GreenRobotEventBus;
 import mx.raulgarcia.android.androidchat.login.events.LoginEvent;
@@ -62,6 +64,7 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     @Override
+    @Subscribe
     public void onEventMainThread(LoginEvent event) {
         switch (event.getEventType()) {
             case LoginEvent.onSignInSuccess:
