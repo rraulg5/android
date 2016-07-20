@@ -1,4 +1,4 @@
-package mx.raulgarcia.android.androidchat.contactlist;
+package mx.raulgarcia.android.androidchat.contactlist.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -14,7 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mx.raulgarcia.android.androidchat.R;
-import mx.raulgarcia.android.androidchat.contactlist.ContactListActivity;
+import mx.raulgarcia.android.androidchat.contactlist.ui.ContactListActivity;
 import mx.raulgarcia.android.androidchat.login.LoginPresenter;
 import mx.raulgarcia.android.androidchat.login.LoginPresenterImpl;
 
