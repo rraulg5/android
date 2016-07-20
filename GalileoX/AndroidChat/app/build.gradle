@@ -24,6 +24,13 @@ android {
     }
 }
 
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.3.0'
@@ -32,6 +39,6 @@ dependencies {
     compile files('libs/firebase-client-android-2.5.2.jar')
     compile files('libs/butterknife-7.0.1.jar')
     compile files('libs/eventbus-3.0.0.jar')
-    compile files('libs/circleimageview-2.0.0-sources.jar')
+    compile(name: 'circleimageview-2.0.0', ext: 'aar')
     compile files('libs/glide-3.6.1.jar')
 }
