@@ -1,4 +1,4 @@
-package mx.raulgarcia.android.androidchat.chat;
+package mx.raulgarcia.android.androidchat.chat.ui;
 
 import mx.raulgarcia.android.androidchat.entities.ChatMessage;
 

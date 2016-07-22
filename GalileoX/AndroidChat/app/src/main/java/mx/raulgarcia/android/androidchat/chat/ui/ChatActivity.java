@@ -1,4 +1,4 @@
-package mx.raulgarcia.android.androidchat.chat;
+package mx.raulgarcia.android.androidchat.chat.ui;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,17 +11,21 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import mx.raulgarcia.android.androidchat.R;
-import mx.raulgarcia.android.androidchat.chat.events.ChatEvent;
+import mx.raulgarcia.android.androidchat.chat.adapters.ChatAdapter;
+import mx.raulgarcia.android.androidchat.chat.ChatPresenter;
+import mx.raulgarcia.android.androidchat.chat.ChatPresenterImpl;
 import mx.raulgarcia.android.androidchat.domain.AvatarHelper;
 import mx.raulgarcia.android.androidchat.entities.ChatMessage;
 import mx.raulgarcia.android.androidchat.lib.GlideImageLoader;
 import mx.raulgarcia.android.androidchat.lib.ImageLoader;
 
-public class ChatActivity extends AppCompatActivity implements ChatView{
+public class ChatActivity extends AppCompatActivity implements ChatView {
 
     @Bind(R.id.imgAvatar)
     CircleImageView imgAvatar;
@@ -74,11 +78,12 @@ public class ChatActivity extends AppCompatActivity implements ChatView{
     }
 
     private void setupAdapter() {
-
+        adapter = new ChatAdapter(this, new ArrayList<ChatMessage>());
     }
 
     private void setupRecyclerView() {
         messageRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        messageRecyclerView.setAdapter(adapter);
     }
 
     @Override

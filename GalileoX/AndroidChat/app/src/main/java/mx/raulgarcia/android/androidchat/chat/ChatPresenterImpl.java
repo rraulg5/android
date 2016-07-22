@@ -1,6 +1,7 @@
 package mx.raulgarcia.android.androidchat.chat;
 
 import mx.raulgarcia.android.androidchat.chat.events.ChatEvent;
+import mx.raulgarcia.android.androidchat.chat.ui.ChatView;
 
 /**
  * Created by rraulg5 on 22/07/2016.
