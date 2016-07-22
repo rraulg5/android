@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import mx.raulgarcia.android.androidchat.R;
 import mx.raulgarcia.android.androidchat.addcontact.ui.AddContactFragment;
+import mx.raulgarcia.android.androidchat.chat.ChatActivity;
 import mx.raulgarcia.android.androidchat.contactlist.ContactListPresenter;
 import mx.raulgarcia.android.androidchat.contactlist.ContactListPresenterImpl;
 import mx.raulgarcia.android.androidchat.contactlist.ui.adapters.ContactListAdapter;
@@ -127,7 +128,10 @@ public class ContactListActivity extends AppCompatActivity implements ContactLis
 
     @Override
     public void onItemClick(User user) {
-        Toast.makeText(this, user.getEmail(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra(ChatActivity.EMAIL_KEY, user.getEmail());
+        intent.putExtra(ChatActivity.ONLINE_KEY, user.isOnline());
+        startActivity(intent);
     }
 
     @Override
