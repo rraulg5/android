@@ -17,6 +17,7 @@ import mx.raulgarcia.android.androidchat.R;
 import mx.raulgarcia.android.androidchat.contactlist.ui.ContactListActivity;
 import mx.raulgarcia.android.androidchat.login.LoginPresenter;
 import mx.raulgarcia.android.androidchat.login.LoginPresenterImpl;
+import mx.raulgarcia.android.androidchat.signup.ui.SignUpActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
@@ -42,7 +43,19 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         ButterKnife.bind(this);
 
         loginPresenter = new LoginPresenterImpl(this);
-        loginPresenter.onCreate();
+    }
+
+    @Override
+    protected void onPause() {
+        loginPresenter.onPause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        loginPresenter.onResume();
         loginPresenter.checkForAuthenticatedUser();
     }
 
@@ -54,7 +67,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void navigateToMainScreen() {
-        startActivity(new Intent(this, ContactListActivity.class));
+        Intent intent = new Intent(this, ContactListActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     @Override
@@ -66,14 +81,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void newUserSuccess() {
-        Snackbar.make(container, R.string.login_notice_msg_signup, Snackbar.LENGTH_SHORT).show();
+        throw new UnsupportedOperationException("Operation is not valid in SignUpActivity");
     }
 
     @Override
     public void newUserError(String error) {
-        inputPassword.setText("");
-        String msgError = String.format(getString(R.string.login_error_msg_signup), error);
-        inputPassword.setError(msgError);
+        throw new UnsupportedOperationException("Operation is not valid in SignUpActivity");
     }
 
     @Override
@@ -99,10 +112,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @OnClick(R.id.btnSignUp)
     @Override
     public void handleSignUp() {
-        loginPresenter.registerNewUser(
-                inputEmail.getText().toString(),
-                inputEmail.getText().toString()
-        );
+        startActivity(new Intent(this, SignUpActivity.class));
     }
 
     @OnClick(R.id.btnSignIn)

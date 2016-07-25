@@ -8,6 +8,8 @@ import mx.raulgarcia.android.androidchat.login.events.LoginEvent;
 public interface LoginPresenter {
     void onCreate();
     void onDestroy();
+    void onResume();
+    void onPause();
     void checkForAuthenticatedUser();
     void validateLogin(String email, String password);
     void registerNewUser(String email, String password);

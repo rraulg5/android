@@ -49,13 +49,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login.btn.signin"
-            android:id="@+id/btnSignIn" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/login.btn.gotosignup"
+            android:text="@string/signup.btn.signup"
             android:id="@+id/btnSignUp" />
     </LinearLayout>
 
