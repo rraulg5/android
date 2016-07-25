@@ -21,7 +21,7 @@ public class FirebaseHelper {
     private final static String CHATS_PATH = "chats";
     private final static String USERS_PATH = "users";
     private final static String CONTACTS_PATH = "contacs";
-    private final static String FIREBASE_URL = "https://android-chat-example.firebaseio.com";
+    private final static String FIREBASE_URL = "https://rraulg5-androidchat.firebaseio.com";
 
     private static class SingletonHolder {
         private static final FirebaseHelper INSTANCE = new FirebaseHelper();
